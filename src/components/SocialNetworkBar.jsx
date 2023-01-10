@@ -1,7 +1,6 @@
 import '../styles/SocialNetworkBar.css';
 
 import * as React from 'react';
-import { NavLink } from 'react-router-dom';
 
 function SocialNetworkBar() {
   return (
