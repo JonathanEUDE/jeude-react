@@ -1,4 +1,4 @@
-.navbar-container {
+header {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -10,7 +10,19 @@
   z-index: 2;
 }
 
-.navbar-wrapper {
+header.nav-scroll {
+  background-color: #f9f9f9;
+  opacity: 90%;
+  transition: background-color 1s;
+}
+header.nav-scroll nav a.link {
+  color: black;
+}
+header.nav-scroll nav a.link.active {
+  color: #1fa78f;
+}
+
+.navbar-container {
   width: 90%;
 
   display: flex;
@@ -19,18 +31,22 @@
   position: relative;
 }
 
-.navbar-container img {
+header img {
   width: 420px;
   height: 100px;
 }
 
-.navbar-container nav {
+nav {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
 
   width: 100%;
+}
+
+nav a:visited {
+  color: white;
 }
 
 .link {
@@ -49,9 +65,5 @@
   text-decoration: underline;
   text-underline-offset: 10px;
   text-decoration-thickness: 3px;
-  transition: text-underline-offset 1s, text-decoration-thickness 1.5s;
-}
-
-.navbar-container nav a:visited {
-  color: white;
+  transition: text-underline-offset 0.5s, text-decoration-thickness 1s;
 }

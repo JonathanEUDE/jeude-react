@@ -21,11 +21,16 @@ function NavBar() {
   };
 
   const handleScroll = () => {
+    const scrollY = window.scrollY;
+    const header = document.querySelector('header');
+    if (scrollY > 50) {
+      header.classList.add('nav-scroll');
+    } else {
+      header.classList.remove('nav-scroll');
+    }
+
     const links = document.querySelectorAll('.link');
     const anchors = document.querySelectorAll('section');
-
-    console.log(links);
-    console.log(anchors);
 
     for (const anchor of anchors) {
       const anchorName = anchor.getAttribute('id');
@@ -50,8 +55,8 @@ function NavBar() {
   window.addEventListener('scroll', handleScroll);
 
   return (
-    <div className="navbar-container">
-      <div className="navbar-wrapper">
+    <header>
+      <div className="navbar-container">
         <img
           src="/assets/images/Logo_Jonathan_EUDE_Consulting.png"
           alt="Logo Jonathan EUDE Consulting"
@@ -77,7 +82,7 @@ function NavBar() {
           </a>
         </nav>
       </div>
-    </div>
+    </header>
   );
 }
 

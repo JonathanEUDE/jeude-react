@@ -10,24 +10,24 @@ function SocialNetworkBar() {
         target="_blank"
         rel="noreferrer"
       >
-        <i class="lni lni-linkedin-original"></i>
+        <i className="lni lni-linkedin-original"></i>
       </a>
       <a
         href="https://github.com/JonathanEUDE"
         target="_blank"
         rel="noreferrer"
       >
-        <i class="lni lni-github-original"></i>
+        <i className="lni lni-github-original"></i>
       </a>
       <a href="https://twitter.com/yell0wwait" target="_blank" rel="noreferrer">
-        <i class="lni lni-twitter-original"></i>
+        <i className="lni lni-twitter-original"></i>
       </a>
       <a
         href="mailto:jonathan.eude@gmail.com?subject=Contact depuis JEUDE.FR"
         target="_blank"
         rel="noreferrer"
       >
-        <i class="lni lni-envelope"></i>
+        <i className="lni lni-envelope"></i>
       </a>
     </div>
   );
