@@ -1,9 +1,10 @@
 .accueil-background {
   background: linear-gradient(70deg, #f9f9f9 50%, #1fa78f 50%);
-  height: 90%;
+  height: 100vh;
   position: relative;
 }
 .accueil-container {
+  padding-top: 100px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -16,10 +17,12 @@
   animation: fadeInUp 1s ease-out 0.2s forwards;
 }
 .accueil-container > h1 {
+  margin-bottom: 20px;
   opacity: 0;
   animation: fadeInUp 1s ease-out 0.5s forwards;
 }
 .accueil-container > h2 {
+  margin-bottom: 20px;
   opacity: 0;
   animation: fadeInUp 1s ease-out 0.8s forwards;
 }

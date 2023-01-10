@@ -1,0 +1,28 @@
+#services {
+  padding-top: 200px;
+  position: relative;
+  height: 100vh;
+}
+
+#services .img-container {
+  position: absolute;
+  left: 150px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#services .img-container img {
+  width: 30vw;
+  height: 30vw;
+  object-fit: cover;
+  border-radius: 30vw;
+  border: 10px solid #1fa78f;
+}
+
+#services .text-container {
+  position: absolute;
+  left: 50%;
+  width: 45%;
+  top: 50%;
+  transform: translateY(-50%);
+}
