@@ -1,0 +1,25 @@
+.socialnetworkbar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: transparent;
+
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translatey(-100px);
+
+  height: 200px;
+  width: 40px;
+  border: 1px solid #1fa78f;
+  border-radius: 50px;
+}
+.socialnetworkbar-container a i {
+  color: grey;
+}
+
+.socialnetworkbar-container a i:hover {
+  color: #1fa78f;
+  transition: color 0.5s;
+}
