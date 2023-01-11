@@ -8,12 +8,13 @@ header {
   width: 100%;
 
   z-index: 2;
+  transition: background-color 0.75s;
 }
 
 header.nav-scroll {
   background-color: #f9f9f9;
   opacity: 90%;
-  transition: background-color 1s;
+  transition: background-color 0.75s;
 }
 header.nav-scroll nav a.link {
   color: black;
@@ -53,17 +54,32 @@ nav a:visited {
   margin-left: 50px;
   color: white;
   text-decoration: none;
-  text-underline-offset: 50px;
-  text-decoration-thickness: 0;
-  font-size: 18px;
-  opacity: 1;
-
-  transition: text-decoration 2s;
+  font-size: 20px;
+  font-weight: bold;
 }
 
-.active {
-  text-decoration: underline;
-  text-underline-offset: 10px;
-  text-decoration-thickness: 3px;
-  transition: text-underline-offset 0.5s, text-decoration-thickness 1s;
+.link::after {
+  content: '';
+  display: block;
+  opacity: 0;
+  border-bottom: 3px solid transparent;
+}
+
+.link.active::after {
+  content: '';
+  display: block;
+  border-bottom: 3px solid;
+  animation: borderLoading 0.5s linear forwards;
+  transform-origin: 0 50%;
+}
+
+@keyframes borderLoading {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
 }

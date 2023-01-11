@@ -1,0 +1,130 @@
+#parcours {
+  padding-top: 100px;
+  margin-bottom: 200px;
+  position: relative;
+  min-height: 4200px;
+}
+
+.fil-ariane {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  top: 100px;
+  left: 0;
+
+  padding: 10px;
+  border-radius: 0 0 5px 5px;
+
+  transition: background-color 1s;
+}
+.fil-ariane > div {
+  display: flex;
+  justify-content: space-around;
+  max-width: 950px;
+  width: 100%;
+}
+
+.fix-fil-ariane {
+  position: fixed;
+  background-color: #f9f9f9;
+  transition: background-color 1s;
+  z-index: 10;
+  opacity: 90%;
+}
+
+.step {
+  width: 75px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: white;
+  z-index: 2;
+}
+
+.step img {
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+  border: 5px solid #949393;
+  transition: border 1s;
+}
+
+.step:not(:last-child)::after {
+  content: '';
+  height: 5px;
+  width: 8%;
+  max-width: 100px;
+  top: 50%;
+  background-color: #949393;
+  position: absolute;
+  transition: background-color 1s;
+}
+
+.step.active img {
+  border: 5px solid #1fa78f;
+  transition: border 1s;
+}
+
+.step.progress:not(:last-child)::after {
+  background-color: #1fa78f;
+  transition: background-color 1s;
+}
+
+.steps-informations {
+  padding: 0 150px 0 150px;
+}
+
+.step-info {
+  margin-top: 200px;
+  min-height: 500px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.step-info-left {
+  height: 400px;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.step-info-left-top {
+  height: 45%;
+}
+
+.step-logo {
+  width: 100px;
+  aspect-ratio: 1;
+  border-radius: 5px;
+  object-fit: contain;
+}
+
+.step-info-left-bottom {
+  height: 45%;
+  width: 80%;
+  display: grid;
+  place-items: center;
+}
+
+.step-info-right {
+  width: 45%;
+  background-color: #949393;
+  opacity: 80%;
+  padding: 50px;
+  border-radius: 5px;
+}
+
+.step-info {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.step-info.active {
+  opacity: 1;
+  transition: opacity 0.5s;
+}

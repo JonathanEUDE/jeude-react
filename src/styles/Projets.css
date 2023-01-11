@@ -1,0 +1,74 @@
+#projets {
+  padding-top: 100px;
+  position: relative;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+}
+
+#projets .img-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#projets .img-container img {
+  width: 30vw;
+  height: 30vw;
+  object-fit: cover;
+  border-radius: 30vw;
+  border: 10px solid #1fa78f;
+  box-shadow: 0 0 10px black;
+}
+
+.projet-container {
+  position: absolute;
+  width: 15vw;
+  height: 15vw;
+  border-radius: 15vw;
+  border: 5px solid #1fa78f;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 2s, border 2s;
+  transform: translate(-50%, -50%);
+}
+
+.projet-container:hover {
+  box-shadow: 0 0 10px #1fa78f;
+  border: 10px solid #1fa78f;
+  transition: box-shadow 0.1s, border 0.1s;
+}
+
+.projet-container span {
+  padding-top: 20px;
+  width: 70%;
+  text-align: center;
+}
+
+#projets .projet-1 {
+  left: 15%;
+  top: 25%;
+}
+#projets .projet-2 {
+  left: 25%;
+  top: 50%;
+}
+#projets .projet-3 {
+  left: 15%;
+  top: 75%;
+}
+#projets .projet-4 {
+  left: 85%;
+  top: 25%;
+}
+#projets .projet-5 {
+  left: 75%;
+  top: 50%;
+}
+#projets .projet-6 {
+  left: 85%;
+  top: 75%;
+}

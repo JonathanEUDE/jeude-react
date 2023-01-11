@@ -1,0 +1,95 @@
+#tarifs {
+  padding-top: 150px;
+  min-height: 100vh;
+  width: 80vw;
+  margin: 0 auto 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.pack {
+  height: 75vh;
+  min-height: 700px;
+  width: 270px;
+  background-color: #f9f9f9;
+  position: relative;
+  border-radius: 5px;
+}
+
+.pack h5 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  width: 300px;
+  height: 100px;
+  background-color: #1fa78f;
+
+  position: absolute;
+  top: -50px;
+  left: -15px;
+  border-radius: 5px;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 25%);
+}
+.pack h5 small {
+  font-size: 16px;
+}
+
+.pack ul {
+  padding-top: 70px;
+  padding-left: 25px;
+}
+
+.pack ul li {
+  line-height: 30px;
+  background: url('../../public/assets/images/check.png') no-repeat left center;
+  padding: 5px 25px 5px 30px;
+  list-style: none;
+  vertical-align: middle;
+  font-size: 16px;
+}
+
+.pack ul small {
+  font-size: 12px;
+  padding-left: 30px;
+}
+
+.small-pack {
+  height: 50vh;
+  min-height: 450px;
+}
+
+.tarif {
+  position: absolute;
+  bottom: 10px;
+  left: -5px;
+  width: 280px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+
+  padding-right: 30px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 25%);
+  border-radius: 0 0 5px 5px;
+}
+
+.tarif-eco {
+  background-color: #55b2fd;
+}
+
+.tarif-confort {
+  background-color: #e0c120;
+}
+
+.tarif-serenite {
+  background-color: #cb5c1e;
+}
+.tarif-express {
+  background-color: #00ae31;
+}

@@ -21,6 +21,7 @@ function NavBar() {
   };
 
   const handleScroll = () => {
+    //console.log(window.screen.height, window.innerHeight);
     const scrollY = window.scrollY;
     const header = document.querySelector('header');
     if (scrollY > 50) {
@@ -74,10 +75,10 @@ function NavBar() {
           <a href="#parcours" className="link" onClick={handleClick}>
             Parcours
           </a>
-          <a href="#tarifs" className="link">
+          <a href="#tarifs" className="link" onClick={handleClick}>
             Tarifs
           </a>
-          <a href="#contact" className="link">
+          <a href="#contact" className="link" onClick={handleClick}>
             Contact
           </a>
         </nav>

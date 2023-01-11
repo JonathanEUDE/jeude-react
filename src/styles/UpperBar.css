@@ -1,0 +1,25 @@
+.upperbar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: transparent;
+
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  transform: translatey(-50%);
+
+  height: 50px;
+  width: 40px;
+  border: 1px solid #1fa78f;
+  border-radius: 50px;
+}
+.upperbar-container a i {
+  color: grey;
+}
+
+.upperbar-container a i:hover {
+  color: #1fa78f;
+  transition: color 0.5s;
+}

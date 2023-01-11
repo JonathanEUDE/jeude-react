@@ -16,7 +16,7 @@ function Accueil() {
           de projet que je suis.
         </p>
         <p>
-          Je suis un <strong>hybride</strong>, entre le{' '}
+          Je suis un <strong>hybride</strong>, entre le{' '}
           <strong>fonctionnel</strong> et la <strong>technique</strong>.
         </p>
         <a
