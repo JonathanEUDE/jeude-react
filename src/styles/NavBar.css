@@ -7,7 +7,7 @@ header {
   position: fixed;
   width: 100%;
 
-  z-index: 2;
+  z-index: 30;
   transition: background-color 0.75s;
 }
 
@@ -15,12 +15,8 @@ header.nav-scroll {
   background-color: #f9f9f9;
   opacity: 90%;
   transition: background-color 0.75s;
-}
-header.nav-scroll nav a.link {
-  color: black;
-}
-header.nav-scroll nav a.link.active {
-  color: #1fa78f;
+
+  box-shadow: 0 0 5px rgba(0, 0, 0, 20%);
 }
 
 .navbar-container {
@@ -47,15 +43,26 @@ nav {
 }
 
 nav a:visited {
-  color: white;
+  color: #f9f9f9;
 }
 
 .link {
   margin-left: 50px;
-  color: white;
+  color: #f9f9f9;
   text-decoration: none;
-  font-size: 20px;
+  font-size: max(1.2vw, 16px);
   font-weight: bold;
+}
+
+.link.active {
+  color: #f9f9f9;
+}
+
+.nav-scroll .link {
+  color: black;
+}
+.nav-scroll .link.active {
+  color: #1fa78f;
 }
 
 .link::after {
@@ -81,5 +88,121 @@ nav a:visited {
   100% {
     opacity: 1;
     transform: scaleX(1);
+  }
+}
+
+#menu__toggle {
+  opacity: 0;
+}
+@media (max-width: 1024px) {
+  header {
+    background-color: #f9f9f9;
+    opacity: 90%;
+    transition: background-color 0.75s;
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, 20%);
+  }
+
+  .navbar-container {
+    justify-content: flex-end;
+  }
+
+  header img {
+    width: 245px;
+    height: 70px;
+  }
+
+  #menu__toggle {
+    opacity: 0;
+  }
+  #menu__toggle:checked + .menu__btn > span {
+    transform: rotate(45deg);
+  }
+  #menu__toggle:checked + .menu__btn > span::before {
+    top: 0;
+    transform: rotate(0deg);
+  }
+  #menu__toggle:checked + .menu__btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+  #menu__toggle:checked ~ nav {
+    left: 0 !important;
+  }
+  .menu__btn {
+    position: fixed;
+    top: 35px;
+    left: 20px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 101;
+  }
+  .menu__btn > span,
+  .menu__btn > span::before,
+  .menu__btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    transition-duration: 0.25s;
+  }
+  .menu__btn > span::before {
+    content: '';
+    top: -8px;
+  }
+  .menu__btn > span::after {
+    content: '';
+    top: 8px;
+  }
+
+  nav {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 250px;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    background-color: #f9f9f9;
+    opacity: 95%;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    transition-duration: 0.25s;
+    z-index: 100;
+  }
+  .link {
+    display: block;
+    padding: 12px 24px;
+    color: black;
+    transition-duration: 0.25s;
+
+    margin-left: 70px;
+  }
+
+  nav a:visited {
+    color: black;
+  }
+
+  .link.active {
+    color: #1fa78f;
+  }
+
+  .nav-scroll .link {
+    color: black;
+  }
+  .nav-scroll .link.active {
+    color: #1fa78f;
+  }
+
+  .link:hover {
+    color: #f9f9f9;
+    background-color: #1fa78f;
+  }
+
+  .link.active:hover {
+    color: #f9f9f9;
+    background-color: #1fa78f;
   }
 }

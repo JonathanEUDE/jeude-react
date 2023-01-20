@@ -6,7 +6,7 @@ function UpperBar() {
   return (
     <div className="upperbar-container">
       <a href="#accueil">
-        <i class="lni lni-angle-double-up"></i>
+        <i className="lni lni-angle-double-up"></i>
       </a>
     </div>
   );

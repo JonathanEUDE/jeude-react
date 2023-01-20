@@ -1,7 +1,7 @@
 #contact {
   min-height: 100vh;
   background-color: #f9f9f9;
-  padding: 20px;
+  padding: 50px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -55,13 +55,18 @@ form {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 500px;
+  width: 100%;
+}
+
+#social-links div {
+  width: 20%;
 }
 
 #social-links a img {
-  width: 50px;
+  width: 53px;
+  aspect-ratio: 1;
 }
 
 #social-links a span {
-  min-width: 320px;
+  width: 80%;
 }

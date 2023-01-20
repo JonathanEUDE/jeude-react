@@ -9,6 +9,7 @@ function NavBar() {
 
   const scrollToAnchor = (anchorName) => {
     const anchorElement = document.getElementById(anchorName);
+    console.log('Scroll to ' + anchorElement.id);
     if (anchorElement) {
       anchorElement.scrollIntoView({ behavior: 'smooth' });
     }
@@ -29,10 +30,8 @@ function NavBar() {
     } else {
       header.classList.remove('nav-scroll');
     }
-
     const links = document.querySelectorAll('.link');
     const anchors = document.querySelectorAll('section');
-
     for (const anchor of anchors) {
       const anchorName = anchor.getAttribute('id');
       const anchorElement = document.getElementById(anchorName);
@@ -62,6 +61,10 @@ function NavBar() {
           src="/assets/images/Logo_Jonathan_EUDE_Consulting.png"
           alt="Logo Jonathan EUDE Consulting"
         />
+        <input id="menu__toggle" type="checkbox" />
+        <label className="menu__btn" htmlFor="menu__toggle">
+          <span></span>
+        </label>
         <nav>
           <a href="#accueil" className="link" onClick={handleClick}>
             Accueil

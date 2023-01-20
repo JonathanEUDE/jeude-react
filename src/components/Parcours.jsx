@@ -1,115 +1,112 @@
-import { useEffect } from 'react';
+import React from 'react';
 import '../styles/Parcours.css';
 
 function Parcours() {
+  const [currentStep, setCurrentStep] = React.useState(-1);
+  const [avancement, setAvancement] = React.useState(0);
+
+  const scrollToStep = (stepName) => {
+    const stepElement = document.getElementById(stepName);
+    console.log('Scroll to ' + stepElement.id);
+    if (stepElement) {
+      stepElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+    }
+  };
+
+  React.useEffect(() => {
+    console.log('useEffect !!!');
+    let parcours = document.querySelector('#parcours');
+    Array.from(parcours.querySelectorAll('.step')).forEach(
+      (stepEl, stepIdx) => {
+        if (stepIdx <= currentStep) {
+          //console.log('add active step ' + (stepIdx + 1));
+          parcours
+            .querySelector('.step-' + (stepIdx + 1))
+            .classList.add('active');
+        } else {
+          //console.log('remove active step ' + (stepIdx + 1));
+          parcours
+            .querySelector('.step-' + (stepIdx + 1))
+            .classList.remove('active');
+        }
+        for (let i = 0; i <= 100; i = i + 10) {
+          if (stepIdx === currentStep && avancement >= i) {
+            //console.log('add progress ' + i + ' step ' + (stepIdx + 1));
+            parcours
+              .querySelector('.step-' + (stepIdx + 1))
+              .classList.add('progress-' + i);
+          }
+          if (stepIdx === currentStep && avancement < i) {
+            //console.log('remove progress ' + i + ' step ' + (stepIdx + 1));
+            parcours
+              .querySelector('.step-' + (stepIdx + 1))
+              .classList.remove('progress-' + i);
+          }
+          if (stepIdx < currentStep) {
+            //console.log('add progress ' + i + ' step ' + (stepIdx + 1));
+            parcours
+              .querySelector('.step-' + (stepIdx + 1))
+              .classList.add('progress-' + i);
+          }
+          if (stepIdx > currentStep) {
+            //console.log('remove progress ' + i + ' step ' + (stepIdx + 1));
+            parcours
+              .querySelector('.step-' + (stepIdx + 1))
+              .classList.remove('progress-' + i);
+          }
+        }
+      }
+    );
+  }, [avancement, currentStep]);
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    const anchorName = event.currentTarget.getAttribute('href').substring(1);
+    scrollToStep(anchorName);
+  };
+
   window.addEventListener('scroll', () => {
     let parcours = document.querySelector('#parcours');
     let scrollY = window.scrollY;
     let topParcours = parcours.offsetTop;
-    let heightParcours = parcours.offsetHeight;
-    let bottomParcours = topParcours + heightParcours;
-    /*console.log(
-      topParcours,
-      heightParcours,
-      bottomParcours,
-      scrollY,
-      topParcours < scrollY,
-      scrollY < bottomParcours
-    );*/
+    let bottomParcours = topParcours + parcours.offsetHeight;
     const filAriane = document.querySelector('.fil-ariane');
-    if (topParcours < scrollY + 20 && scrollY < bottomParcours) {
+    if (topParcours < scrollY && scrollY < bottomParcours) {
       filAriane.classList.add('fix-fil-ariane');
-      let calcul = (scrollY - topParcours + 200) / 700;
-      let calculatedStep = Math.ceil(calcul);
-      let percentageStep = (1 - (calculatedStep - calcul)) * 100;
-
-      calculatedStep = calculatedStep ? calculatedStep : 0;
-
-      Array.from(document.querySelectorAll('.step-info')).forEach(function (
+      Array.from(parcours.querySelectorAll('.step-info')).forEach(function (
         el,
         idx
       ) {
-        if (idx + 1 !== calculatedStep) el.classList.remove('active');
-      });
-      let calculatedStepInfoElement = document.querySelector(
-        '.step-info-' + calculatedStep
-      );
-      if (calculatedStepInfoElement)
-        calculatedStepInfoElement.classList.add('active');
+        let topStep = topParcours + el.offsetTop - window.innerHeight / 3;
+        let heightStep = el.offsetHeight;
+        let bottomStep = topStep + heightStep;
 
-      Array.from(document.querySelectorAll('.step')).forEach(function (
-        el,
-        idx
-      ) {
-        if (calculatedStep < idx + 1) {
-          el.classList.remove('progress');
-          el.classList.remove('active');
-        } else {
+        if (scrollY >= topStep && scrollY <= bottomStep) {
           el.classList.add('active');
-          if (percentageStep > 50) {
-            el.classList.add('progress');
-          }
-          if (calculatedStep === idx + 1) {
-            if (percentageStep < 50) {
-              el.classList.remove('progress');
-            }
-          }
+          if (idx !== currentStep) setCurrentStep(idx);
+          let avc = Math.floor((10 * (scrollY - topStep)) / heightStep) * 10;
+          if (avc !== avancement) setAvancement(avc);
+          //console.log(idx, currentStep, avancement);
+        } else {
+          el.classList.remove('active');
         }
       });
     } else {
-      Array.from(document.querySelectorAll('.step')).forEach(function (
-        el,
-        idx
-      ) {
-        el.classList.remove('progress');
-        el.classList.remove('active');
-      });
+      if (topParcours > scrollY || bottomParcours < scrollY) {
+        setAvancement(0);
+        setCurrentStep(-1);
+      }
       filAriane.classList.remove('fix-fil-ariane');
     }
   });
 
   return (
     <section id="parcours">
-      <div className="fil-ariane">
-        <div>
-          <div className="step step-1">
-            <img
-              src="assets/images/parcours/openclassrooms.png"
-              alt="Logo OpenClassRooms"
-            />
-          </div>
-          <div className="step step-2">
-            <img
-              src="assets/images/parcours/sqi.png"
-              alt="Logo SQI IT Solutions"
-            />
-          </div>
-          <div className="step step-3">
-            <img
-              src="assets/images/parcours/bolloré_energy.png"
-              alt="Logo Bolloré Énergy"
-            />
-          </div>
-          <div className="step step-4">
-            <img
-              src="assets/images/parcours/FNAC_COM.jpg"
-              alt="Logo Fnac.com"
-            />
-          </div>
-          <div className="step step-5">
-            <img
-              src="assets/images/parcours/tf1-pub.jpg"
-              alt="Logo TF1 Publicité"
-            />
-          </div>
-          <div className="step step-6">
-            <img src="assets/images/parcours/etudes.jpg" alt="Logo Etudes" />
-          </div>
-        </div>
-      </div>
-
       <div className="steps-informations">
-        <div className="step-info step-info-1">
+        <div className="step-info step-info-1" id="openclassrooms">
           <div className="step-info-left">
             <div className="step-info-left-top">
               <img
@@ -118,16 +115,20 @@ function Parcours() {
                 className="step-logo"
               />
               <h4 className="green-title">Formation Développeur Web</h4>
-              <small>6 mois - Juillet 2022 - Décembre 2022</small>
+              <span>6 mois - Juillet 2022 - Décembre 2022</span>
               <br />
-              <small> Formation à distance</small>
+              <span>Formation à distance</span>
             </div>
             <div className="step-info-left-bottom">
-              A travers cette formation, je souhaitais me mettre à jour sur le
-              plan technique.
-              <br /> Mon expérience de Consultant - Chef de Projet, je
-              souhaitais mêler mes connaissances fonctionnelles avec les
-              nouvelles technologies.
+              <p>
+                A travers cette formation, je souhaitais me mettre à jour sur le
+                plan technique.
+              </p>
+              <p>
+                Suite à mon expérience de Consultant - Chef de Projet, je
+                souhaitais mêler mes connaissances fonctionnelles avec les
+                nouvelles technologies.
+              </p>
             </div>
           </div>
           <ul className="step-info-right">
@@ -161,7 +162,7 @@ function Parcours() {
             <li>Créer, gérer et afficher le contenu d’une base de données.</li>
           </ul>
         </div>
-        <div class="step-info step-info-2">
+        <div className="step-info step-info-2" id="sqi">
           <div className="step-info-left">
             <div className="step-info-left-top">
               <img
@@ -169,51 +170,39 @@ function Parcours() {
                 alt="Logo SQI IT Solutions"
                 className="step-logo"
               />
-              <h4 className="green-title">Formation Développeur Web</h4>
-              <small>6mois - Juillet 2022 - Décembre 2022</small>
+              <h4 className="green-title">Consultant - Chef de projet</h4>
+              <span>5 ans & 9 mois - Octobre 2016 - Juin 2022</span>
               <br />
-              <small> Formation à distance</small>
+              <span>Versailles (78) - Télétravail</span>
             </div>
             <div className="step-info-left-bottom">
-              A travers cette formation, je souhaitais me mettre à jour sur le
-              plan technique.
-              <br /> Mon expérience de Consultant - Chef de Projet, je
-              souhaitais mêler mes connaissances fonctionnelles avec les
-              nouvelles technologies.
+              <p>
+                Consultant et chef de projet sur un ERP, Espace Affaires,
+                développé par SQI et intégration de suites logicielles
+                agrémentant les fonctionnalités de l’ERP.
+              </p>
             </div>
           </div>
           <ul className="step-info-right">
+            <li>Analyse des besoins du client</li>
+            <li> Mise en place de l'ERP Espace Affaires</li>
             <li>
-              Découper, assembler et intégrer tous les éléments d’une maquette
-              graphique en HTML5 et CSS
+              Intégration de logiciels partenaires (YOOZ : Dématérialisation de
+              factures fournisseurs / TWIMM : Plateforme de GMAO / Logiciels de
+              comptabilité : SAGE / IRIS / QUADRA / PRISME / Quick Devis /
+              MyReport)
             </li>
-            <li>Ajouter du contenu audio et vidéo en HTML5</li>
-            <li>Animer les pages web avec CSS3</li>
-            <li>Appliquer les standards du web et les normes en vigueur </li>
+            <li> BI : Suite logicielle MyReport</li>
+            <li>Logiciel de chiffrage et de devis : Quick-Devis</li>
+            <li>Mise en place & réalisation de formation</li>
+            <li>Assistance Hotline</li>
             <li>
-              Construire un site web fluide s’adaptant à tout type d’écran (web,
-              smartphone et tablette)
+              Support Technique - SQL Server (Performance, Installation,
+              Scripts)
             </li>
-            <li>
-              Améliorer le référencement naturel en utilisant les balises selon
-              leur sémantique
-            </li>
-            <li>
-              Faire réagir la page web en fonction des actions de l’utilisateur
-              en JavaScript
-            </li>
-            <li>
-              Se connecter à un service web pour exploiter des données tierces
-              (API)
-            </li>
-            <li>
-              Gérer les comptes utilisateurs ; concevoir un site maintenable
-              grâce à la gestion des erreurs et exceptions
-            </li>
-            <li>Créer, gérer et afficher le contenu d’une base de données.</li>
           </ul>
         </div>
-        <div class="step-info step-info-3">
+        <div className="step-info step-info-3" id="bollore">
           <div className="step-info-left">
             <div className="step-info-left-top">
               <img
@@ -221,51 +210,37 @@ function Parcours() {
                 alt="Logo Bolloré Énergy"
                 className="step-logo"
               />
-              <h4 className="green-title">Formation Développeur Web</h4>
-              <small>6mois - Juillet 2022 - Décembre 2022</small>
+              <h4 className="green-title">Responsable d'application</h4>
+              <span>3 ans et 9 mois - Juillet 2022 - Décembre 2022</span>
               <br />
-              <small> Formation à distance</small>
+              <span>Puteaux (92) / Lucé (28)</span>
             </div>
             <div className="step-info-left-bottom">
-              A travers cette formation, je souhaitais me mettre à jour sur le
-              plan technique.
-              <br /> Mon expérience de Consultant - Chef de Projet, je
-              souhaitais mêler mes connaissances fonctionnelles avec les
-              nouvelles technologies.
+              <p>
+                Chef de projet et développeur sur une application critique de
+                l’entreprise.
+              </p>
+              <p>
+                Cet outil permet de gérer l’approvisionnement des dépôts en
+                produits pétroliers, générer et ajuster les prix de l’ensemble
+                du réseau (négoce & détail) et suivre le risque sur les devises
+                et sur le pétrole.
+              </p>
             </div>
           </div>
           <ul className="step-info-right">
+            <li> Suivi et amélioration de l’application France</li>
             <li>
-              Découper, assembler et intégrer tous les éléments d’une maquette
-              graphique en HTML5 et CSS
+              Maitrise du contexte métier et appui quotidien des utilisateurs
             </li>
-            <li>Ajouter du contenu audio et vidéo en HTML5</li>
-            <li>Animer les pages web avec CSS3</li>
-            <li>Appliquer les standards du web et les normes en vigueur </li>
+            <li>Création de l’application pour la filiale Suisse</li>
             <li>
-              Construire un site web fluide s’adaptant à tout type d’écran (web,
-              smartphone et tablette)
+              Optimisation des procédures stockées et fonctions SQL Server
             </li>
-            <li>
-              Améliorer le référencement naturel en utilisant les balises selon
-              leur sémantique
-            </li>
-            <li>
-              Faire réagir la page web en fonction des actions de l’utilisateur
-              en JavaScript
-            </li>
-            <li>
-              Se connecter à un service web pour exploiter des données tierces
-              (API)
-            </li>
-            <li>
-              Gérer les comptes utilisateurs ; concevoir un site maintenable
-              grâce à la gestion des erreurs et exceptions
-            </li>
-            <li>Créer, gérer et afficher le contenu d’une base de données.</li>
+            <li>Mise en place d'interface avec des outils AS400</li>
           </ul>
         </div>
-        <div class="step-info step-info-4">
+        <div className="step-info step-info-4" id="fnac">
           <div className="step-info-left">
             <div className="step-info-left-top">
               <img
@@ -273,51 +248,35 @@ function Parcours() {
                 alt="Logo Fnac.com"
                 className="step-logo"
               />
-              <h4 className="green-title">Formation Développeur Web</h4>
-              <small>6mois - Juillet 2022 - Décembre 2022</small>
+              <h4 className="green-title">Ingénieur Études & Développement</h4>
+              <span>3 ans - Janvier 2010 - Décembre 2012</span>
               <br />
-              <small> Formation à distance</small>
+              <span>Ivry-Sur-Seine (94)</span>
             </div>
             <div className="step-info-left-bottom">
-              A travers cette formation, je souhaitais me mettre à jour sur le
-              plan technique.
-              <br /> Mon expérience de Consultant - Chef de Projet, je
-              souhaitais mêler mes connaissances fonctionnelles avec les
-              nouvelles technologies.
+              <p>
+                Développeur sur des applications permettant la gestion des
+                fiches articles du site Fnac.com au sein de l’équipe
+                Middle-Office.
+              </p>
             </div>
           </div>
           <ul className="step-info-right">
             <li>
-              Découper, assembler et intégrer tous les éléments d’une maquette
-              graphique en HTML5 et CSS
+              Optimisation du processus numérisation mp3 (Fnac.com et magasins)
             </li>
-            <li>Ajouter du contenu audio et vidéo en HTML5</li>
-            <li>Animer les pages web avec CSS3</li>
-            <li>Appliquer les standards du web et les normes en vigueur </li>
+            <li>« Requêteur » automatique de catégorisation des articles</li>
+            <li>Optimisation du processus images du site</li>
+            <li>Intégration de la notion d’œuvre</li>
+            <li>Ouverture du marché B2B (Fnacpro.com)</li>
+            <li>Gestion des changements de TVA Livres 7%</li>
+            <li>Migration SQL Server 2005 vers 2008 R2</li>
             <li>
-              Construire un site web fluide s’adaptant à tout type d’écran (web,
-              smartphone et tablette)
+              Mise en place d’une base de données dédiée à la DGCCRF (Soldes)
             </li>
-            <li>
-              Améliorer le référencement naturel en utilisant les balises selon
-              leur sémantique
-            </li>
-            <li>
-              Faire réagir la page web en fonction des actions de l’utilisateur
-              en JavaScript
-            </li>
-            <li>
-              Se connecter à un service web pour exploiter des données tierces
-              (API)
-            </li>
-            <li>
-              Gérer les comptes utilisateurs ; concevoir un site maintenable
-              grâce à la gestion des erreurs et exceptions
-            </li>
-            <li>Créer, gérer et afficher le contenu d’une base de données.</li>
           </ul>
         </div>
-        <div class="step-info step-info-5">
+        <div className="step-info step-info-5" id="tf1">
           <div className="step-info-left">
             <div className="step-info-left-top">
               <img
@@ -325,51 +284,29 @@ function Parcours() {
                 alt="Logo TF1 Publicité"
                 className="step-logo"
               />
-              <h4 className="green-title">Formation Développeur Web</h4>
-              <small>6mois - Juillet 2022 - Décembre 2022</small>
+              <h4 className="green-title">Ingénieur R&D</h4>
+              <span>1 an et 2 mois - Octobre 2008 - Décembre 2009</span>
               <br />
-              <small> Formation à distance</small>
+              <span>Boulogne-Billancourt (92)</span>
             </div>
             <div className="step-info-left-bottom">
-              A travers cette formation, je souhaitais me mettre à jour sur le
-              plan technique.
-              <br /> Mon expérience de Consultant - Chef de Projet, je
-              souhaitais mêler mes connaissances fonctionnelles avec les
-              nouvelles technologies.
+              <p>
+                Dans l'équipe Architecture de la DSI, je travaille sur le
+                framework interne et sur des problématiques SQL Server.
+              </p>
+              <p>
+                En fin d'alternance, je reste 2 mois, en tant que développeur
+                sur une application de gestion des publicités Internet & radios.
+              </p>
+              <br />
             </div>
           </div>
           <ul className="step-info-right">
-            <li>
-              Découper, assembler et intégrer tous les éléments d’une maquette
-              graphique en HTML5 et CSS
-            </li>
-            <li>Ajouter du contenu audio et vidéo en HTML5</li>
-            <li>Animer les pages web avec CSS3</li>
-            <li>Appliquer les standards du web et les normes en vigueur </li>
-            <li>
-              Construire un site web fluide s’adaptant à tout type d’écran (web,
-              smartphone et tablette)
-            </li>
-            <li>
-              Améliorer le référencement naturel en utilisant les balises selon
-              leur sémantique
-            </li>
-            <li>
-              Faire réagir la page web en fonction des actions de l’utilisateur
-              en JavaScript
-            </li>
-            <li>
-              Se connecter à un service web pour exploiter des données tierces
-              (API)
-            </li>
-            <li>
-              Gérer les comptes utilisateurs ; concevoir un site maintenable
-              grâce à la gestion des erreurs et exceptions
-            </li>
-            <li>Créer, gérer et afficher le contenu d’une base de données.</li>
+            <li>Optimisation SQL de traitements lourds et quotidiens</li>
+            <li>Modification d’écrans WinForm</li>
           </ul>
         </div>
-        <div class="step-info step-info-6">
+        <div className="step-info step-info-6" id="etudes">
           <div className="step-info-left">
             <div className="step-info-left-top">
               <img
@@ -377,49 +314,101 @@ function Parcours() {
                 alt="Logo Etudes"
                 className="step-logo"
               />
-              <h4 className="green-title">Formation Développeur Web</h4>
-              <small>6mois - Juillet 2022 - Décembre 2022</small>
+              <h4 className="green-title">Formation Universitaire</h4>
+              <span>Septembre 2004 à Août 2009</span>
               <br />
-              <small> Formation à distance</small>
             </div>
             <div className="step-info-left-bottom">
-              A travers cette formation, je souhaitais me mettre à jour sur le
-              plan technique.
-              <br /> Mon expérience de Consultant - Chef de Projet, je
-              souhaitais mêler mes connaissances fonctionnelles avec les
-              nouvelles technologies.
+              <p>
+                Passionné par l'informatique, j'ai effectué un cursus MIAGE qui
+                liait Informatique et Gestion d'entreprise.
+              </p>
+              <p>
+                J'ai finalisé mon cursus MIAGE à l'Université Paris 1 Sorbonne /
+                IAE Paris en obtenant mon Master 2 (Bac+5).
+              </p>
             </div>
           </div>
           <ul className="step-info-right">
             <li>
-              Découper, assembler et intégrer tous les éléments d’une maquette
-              graphique en HTML5 et CSS
-            </li>
-            <li>Ajouter du contenu audio et vidéo en HTML5</li>
-            <li>Animer les pages web avec CSS3</li>
-            <li>Appliquer les standards du web et les normes en vigueur </li>
-            <li>
-              Construire un site web fluide s’adaptant à tout type d’écran (web,
-              smartphone et tablette)
+              Master 2 MIAGE (Bac +5) IAE – Université Sorbonne Paris 1 –
+              2008/2009 – Paris
             </li>
             <li>
-              Améliorer le référencement naturel en utilisant les balises selon
-              leur sémantique
+              Master 1 MIAGE IUP – Université Picardie Jules Verne – 2007/2008 –
+              Amiens
             </li>
             <li>
-              Faire réagir la page web en fonction des actions de l’utilisateur
-              en JavaScript
+              Licence MIAGE IUP – Université Picardie Jules Verne – 2006/2007 –
+              Amiens
             </li>
             <li>
-              Se connecter à un service web pour exploiter des données tierces
-              (API)
+              DUT Informatique IUT – Université Picardie Jules Verne – 2004/2006
+              – Amiens
             </li>
             <li>
-              Gérer les comptes utilisateurs ; concevoir un site maintenable
-              grâce à la gestion des erreurs et exceptions
+              Baccalauréat S – Lycée Pierre Mendés France – 2004 – Péronne
             </li>
-            <li>Créer, gérer et afficher le contenu d’une base de données.</li>
           </ul>
+        </div>
+      </div>
+      <div className="fil-ariane">
+        <div className="steps">
+          <div className="step step-1" id="step-1">
+            <a href="#openclassrooms" onClick={handleClick}>
+              <img
+                src="assets/images/parcours/openclassrooms.png"
+                alt="Logo OpenClassRooms"
+              />
+            </a>
+          </div>
+          <div className="step step-2" id="step-2">
+            <a href="#sqi" onClick={handleClick}>
+              <img
+                src="assets/images/parcours/sqi.png"
+                alt="Logo SQI IT Solutions"
+              />
+            </a>
+          </div>
+          <div className="step step-3" id="step-3">
+            <a href="#bollore" onClick={handleClick}>
+              <img
+                src="assets/images/parcours/bolloré_energy.png"
+                alt="Logo Bolloré Énergy"
+              />
+            </a>
+          </div>
+          <div className="step step-4" id="step-4">
+            <a href="#fnac" onClick={handleClick}>
+              <img
+                src="assets/images/parcours/FNAC_COM.jpg"
+                alt="Logo Fnac.com"
+              />
+            </a>
+          </div>
+          <div className="step step-5" id="step-5">
+            <a href="#tf1" onClick={handleClick}>
+              <img
+                src="assets/images/parcours/tf1-pub.jpg"
+                alt="Logo TF1 Publicité"
+              />
+            </a>
+          </div>
+          <div className="step step-6" id="step-6">
+            <a href="#etudes" onClick={handleClick}>
+              <img src="assets/images/parcours/etudes.jpg" alt="Logo Etudes" />
+            </a>
+          </div>
+        </div>
+        <div id="mon-cv">
+          <a href="assets/images/parcours/CV_Jonathan_EUDE.pdf" target="_blank">
+            <img
+              src="assets/images/parcours/curriculum.png"
+              alt="Télécharger mon CV"
+              id="cv"
+            />
+          </a>
+          <span class="tooltiptext">Télécharger CV</span>
         </div>
       </div>
     </section>

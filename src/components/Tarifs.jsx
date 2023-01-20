@@ -14,10 +14,23 @@ function Tarifs() {
           <li>Formation</li>
           <small>(1 utilisateur)</small>
         </ul>
-        <span className="tarif tarif-eco white-title">
-          <small>à partir de </small>
-          <br />1 400€
-        </span>
+        <div className="tarif tarif-eco white-title">
+          <div className="tarif-inner">
+            <div className="tarif-front">
+              <small>à partir de </small>
+              <span>1 400€</span>
+            </div>
+            <div className="tarif-back">
+              <a
+                href="mailto:jonathan.eude@gmail.com?subject=Pack ECO - Demande de devis"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Contactez-moi !
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="pack" id="pack-confort">
         <h5 className="white-title">
@@ -34,10 +47,23 @@ function Tarifs() {
           <li>Support & Hotline</li>
           <small>(2h d'assistance téléphonique)</small>
         </ul>
-        <span className="tarif tarif-confort white-title">
-          <small>à partir de </small>
-          <br />2 500€
-        </span>
+        <div className="tarif tarif-confort white-title">
+          <div className="tarif-inner">
+            <div className="tarif-front">
+              <small>à partir de </small>
+              <span>2 500€</span>
+            </div>
+            <div className="tarif-back">
+              <a
+                href="mailto:jonathan.eude@gmail.com?subject=Pack Confort - Demande de devis"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Contactez-moi !
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="pack" id="pack-serenite">
         <h5 className="white-title">
@@ -59,10 +85,23 @@ function Tarifs() {
           <li>Sauvegardes</li>
           <li>Logs</li>
         </ul>
-        <span className="tarif tarif-serenite white-title">
-          <small>à partir de </small>
-          <br />4 500€
-        </span>
+        <div className="tarif tarif-serenite white-title">
+          <div className="tarif-inner">
+            <div className="tarif-front">
+              <small>à partir de </small>
+              <span>4 500€</span>
+            </div>
+            <div className="tarif-back">
+              <a
+                href="mailto:jonathan.eude@gmail.com?subject=Pack Sérénité - Demande de devis"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Contactez-moi !
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="pack small-pack" id="pack-express">
         <h5 className="white-title">
@@ -72,16 +111,25 @@ function Tarifs() {
           <li>Analyse des besoins</li>
           <li>Développements</li>
           <li>Mise en service</li>
-          <img
-            src="/assets/images/quantite-limitee.png"
-            alt="Quantité Limitée"
-          />
         </ul>
-        <span className="tarif tarif-express white-title">
-          <small>à partir de </small>
-          <br />
-          600€
-        </span>
+        <img src="/assets/images/quantite-limitee.png" alt="Quantité Limitée" />
+        <div className="tarif tarif-express white-title">
+          <div className="tarif-inner">
+            <div className="tarif-front">
+              <small>à partir de </small>
+              <span>600€</span>
+            </div>
+            <div className="tarif-back">
+              <a
+                href="mailto:jonathan.eude@gmail.com?subject=Pack Express - Demande de devis"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Contactez-moi !
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

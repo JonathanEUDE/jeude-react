@@ -1,5 +1,5 @@
 #tarifs {
-  padding-top: 150px;
+  padding: 150px 0;
   min-height: 100vh;
   width: 80vw;
   margin: 0 auto 0 auto;
@@ -7,12 +7,14 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .pack {
   height: 75vh;
-  min-height: 700px;
-  width: 270px;
+  min-height: 80vh;
+  width: 15vw;
+  min-width: 270px;
   background-color: #f9f9f9;
   position: relative;
   border-radius: 5px;
@@ -24,13 +26,14 @@
   justify-content: space-around;
   align-items: center;
   color: white;
-  width: 300px;
-  height: 100px;
+  width: 15vw;
+  min-width: 270px;
+  height: 70px;
   background-color: #1fa78f;
 
   position: absolute;
-  top: -50px;
-  left: -15px;
+  top: 10px;
+  left: 0px;
   border-radius: 5px;
 
   box-shadow: 0 0 10px rgba(0, 0, 0, 25%);
@@ -38,15 +41,20 @@
 .pack h5 small {
   font-size: 16px;
 }
+.pack img {
+  padding: 50px 20px 20px 20px;
+  width: 100%;
+}
 
 .pack ul {
-  padding-top: 70px;
+  padding-top: 90px;
   padding-left: 25px;
 }
 
 .pack ul li {
-  line-height: 30px;
+  line-height: 22px;
   background: url('../../public/assets/images/check.png') no-repeat left center;
+  background-size: 20px;
   padding: 5px 25px 5px 30px;
   list-style: none;
   vertical-align: middle;
@@ -59,24 +67,69 @@
 }
 
 .small-pack {
-  height: 50vh;
-  min-height: 450px;
+  height: 60vh;
+  min-height: 500px;
 }
 
 .tarif {
   position: absolute;
   bottom: 10px;
-  left: -5px;
-  width: 280px;
-  height: 100px;
+  left: 0px;
+  width: 15vw;
+  min-width: 270px;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  padding: 5px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 25%);
+  border-radius: 0 0 5px 5px;
+
+  perspective: 1000px;
+}
+
+.tarif-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 4s;
+  transform-style: preserve-3d;
+  background-color: rgba(F9, F9, F9, 20%);
+}
+
+.tarif:hover .tarif-inner {
+  transform: rotateY(180deg);
+  transition: transform 0.8s;
+}
+
+.tarif-front,
+.tarif-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
 
-  padding-right: 30px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 25%);
-  border-radius: 0 0 5px 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 50%);
+}
+
+.tarif-back {
+  transform: rotateY(180deg);
+  background-color: rgba(249, 249, 249);
+}
+
+.tarif-back a {
+  text-decoration: none;
+  color: black;
 }
 
 .tarif-eco {

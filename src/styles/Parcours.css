@@ -2,7 +2,7 @@
   padding-top: 100px;
   margin-bottom: 200px;
   position: relative;
-  min-height: 4200px;
+  min-height: 4600px;
 }
 
 .fil-ariane {
@@ -19,10 +19,10 @@
 
   transition: background-color 1s;
 }
-.fil-ariane > div {
+.steps {
   display: flex;
   justify-content: space-around;
-  max-width: 950px;
+  max-width: 768px;
   width: 100%;
 }
 
@@ -30,7 +30,7 @@
   position: fixed;
   background-color: #f9f9f9;
   transition: background-color 1s;
-  z-index: 10;
+  z-index: 1;
   opacity: 90%;
 }
 
@@ -48,28 +48,100 @@
   height: 75px;
   object-fit: contain;
   border: 5px solid #949393;
-  transition: border 1s;
+  transition: border 0.7s;
 }
 
-.step:not(:last-child)::after {
+.step:not(:last-child):after {
   content: '';
   height: 5px;
-  width: 8%;
-  max-width: 100px;
+  width: 64px;
   top: 50%;
   background-color: #949393;
   position: absolute;
-  transition: background-color 1s;
+  transition: background-color 0.7s;
 }
 
 .step.active img {
   border: 5px solid #1fa78f;
-  transition: border 1s;
+  transition: border 0.7s;
 }
 
-.step.progress:not(:last-child)::after {
-  background-color: #1fa78f;
-  transition: background-color 1s;
+.step.progress-0:not(:last-child)::after {
+  background-image: linear-gradient(155deg, #1fa78f 0%, #949393 0%);
+  transition: background-image 0.7s;
+}
+
+.step.progress-10:not(:last-child)::after {
+  background-image: linear-gradient(155deg, #1fa78f 10%, #949393 10%);
+  transition: background-image 0.7s;
+}
+.step.progress-20:not(:last-child)::after {
+  background-image: linear-gradient(155deg, #1fa78f 20%, #949393 20%);
+  transition: background-image 0.7s;
+}
+.step.progress-30:not(:last-child)::after {
+  background-image: linear-gradient(155deg, #1fa78f 30%, #949393 30%);
+  transition: background-image 0.7s;
+}
+.step.progress-40:not(:last-child)::after {
+  background-image: linear-gradient(155deg, #1fa78f 40%, #949393 40%);
+  transition: background-image 0.7s;
+}
+.step.progress-50:not(:last-child)::after {
+  background-image: linear-gradient(155deg, #1fa78f 50%, #949393 50%);
+  transition: background-image 0.7s;
+}
+.step.progress-60:not(:last-child)::after {
+  background-image: linear-gradient(155deg, #1fa78f 60%, #949393 60%);
+  transition: background-image 0.7s;
+}
+.step.progress-70:not(:last-child)::after {
+  background-image: linear-gradient(155deg, #1fa78f 70%, #949393 70%);
+  transition: background-image 0.7s;
+}
+.step.progress-80:not(:last-child)::after {
+  background-image: linear-gradient(155deg, #1fa78f 80%, #949393 80%);
+}
+.step.progress-90:not(:last-child)::after {
+  background-image: linear-gradient(155deg, #1fa78f 90%, #949393 90%);
+}
+.step.progress-100:not(:last-child)::after {
+  background-image: linear-gradient(155deg, #1fa78f 100%, #949393 100%);
+  transition: background-image 0.7s;
+}
+
+#mon-cv {
+  width: 50px;
+  position: relative;
+}
+#mon-cv img {
+  width: 50px;
+}
+.tooltiptext {
+  visibility: hidden;
+}
+/* Tooltip text */
+#mon-cv .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  width: 100px;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+#mon-cv:hover .tooltiptext {
+  visibility: visible;
 }
 
 .steps-informations {
@@ -87,7 +159,7 @@
 }
 
 .step-info-left {
-  height: 400px;
+  height: 60vh;
   width: 45%;
   display: flex;
   flex-direction: column;
@@ -95,6 +167,10 @@
 }
 .step-info-left-top {
   height: 45%;
+}
+
+.step-info-left-top span {
+  font-size: 20px;
 }
 
 .step-logo {
@@ -107,16 +183,22 @@
 .step-info-left-bottom {
   height: 45%;
   width: 80%;
-  display: grid;
-  place-items: center;
+  font-size: 24px;
 }
 
 .step-info-right {
   width: 45%;
-  background-color: #949393;
+
+  padding: 20px 50px;
+  background-color: #f9f9f9;
   opacity: 80%;
-  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  line-height: 25px;
   border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 25%);
 }
 
 .step-info {
@@ -127,4 +209,65 @@
 .step-info.active {
   opacity: 1;
   transition: opacity 0.5s;
+}
+
+@media (max-width: 1024px) {
+  #parcours {
+    display: flex;
+  }
+
+  .fil-ariane {
+    top: 70px;
+    padding-left: 70px;
+  }
+  #mon-cv {
+    display: none;
+  }
+
+  .steps-informations {
+    padding: 0 70px 0 70px;
+  }
+
+  .step-info {
+    margin-top: 100px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .step-info-left {
+    align-items: center;
+    width: 100%;
+    height: 40vh;
+    min-height: 450px;
+    padding-bottom: 30px;
+  }
+
+  .step-info-left-top {
+    width: 80%;
+  }
+
+  .step-info-left-bottom {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 80%;
+    height: auto;
+  }
+
+  .step-info-right {
+    width: 100%;
+  }
+
+  .step-info-right {
+    height: fit-content;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .step:not(:last-child):after {
+    width: 7%;
+  }
 }
