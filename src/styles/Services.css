@@ -15,9 +15,6 @@
   width: 30vw;
   height: 30vw;
   object-fit: cover;
-  border-radius: 30vw;
-  border: 10px solid #1fa78f;
-  box-shadow: 0 0 10px black;
 }
 
 #services .text-container {
@@ -26,4 +23,26 @@
   width: 45%;
   top: 50%;
   transform: translateY(-50%);
+}
+
+@media (max-width: 1024px) {
+  #services {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px 0;
+    position: static;
+    width: 100%;
+  }
+  #services .img-container {
+    position: static;
+    transform: translateY(0);
+  }
+
+  #services .text-container {
+    position: static;
+    transform: translateY(0);
+    width: 80%;
+  }
 }
