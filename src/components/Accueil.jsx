@@ -7,7 +7,7 @@ function Accueil() {
   return (
     <section className="accueil-background" id="accueil">
       <div className="accueil-container">
-        <div className="green-title">Hello, je suis</div>
+        <span className="green-title">Hello, je suis</span>{' '}
         <h1>Jonathan EUDE</h1>
         <h2>Consultant / Chef de projet / Développeur</h2>
         <p>
@@ -32,6 +32,27 @@ function Accueil() {
         src="/assets/images/Jonathan_EUDE_Photo_Profil.png"
         alt="Jonathan EUDE, Consultant / Chef de Projet / Développeur Freelance"
       />
+      <figure
+        className="softskills-container"
+        aria-label="Force de proposition, Détermination, Sens du Service, Engagement"
+      >
+        <blockquote aria-hidden>
+          <p className="colored-text">
+            <span>Force de proposition</span>
+          </p>
+
+          <div className="cut-text-container">
+            <p className="cut-text">
+              <span>Sens du Service</span>
+              <span>Détermination</span>
+            </p>
+          </div>
+
+          <p className="colored-text second">
+            <span>Engagement</span>
+          </p>
+        </blockquote>
+      </figure>
     </section>
   );
 }

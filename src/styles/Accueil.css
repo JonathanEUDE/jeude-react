@@ -21,6 +21,8 @@
   margin-bottom: 20px;
   opacity: 0;
   animation: fadeInUp 1s ease-out 0.5s forwards;
+  position: relative;
+  height: 50px;
 }
 .accueil-container > h2 {
   margin-bottom: 20px;
@@ -48,6 +50,7 @@
   aspect-ratio: 0.76;
   transition: left 2s;
   animation: comeIn 1.3s ease-out 1.8s forwards;
+  z-index: 20;
 }
 
 #photoprofil:hover {
@@ -77,6 +80,68 @@
   }
 }
 
+.softskills-container {
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  width: 40%;
+
+  text-align: center;
+  font-size: min(2vw, 46px);
+  white-space: nowrap;
+  font-style: italic;
+}
+.softskills-container blockquote {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+}
+.softskills-container p {
+  line-height: 1;
+  text-transform: uppercase;
+}
+.softskills-container p span {
+  display: block;
+  line-height: 1.2;
+  padding: 30px;
+}
+.softskills-container .cut-text-container {
+  background-color: #1fa78f;
+  position: relative;
+  z-index: 1;
+  padding: 0px 80px;
+  animation: moveCutClip 4s ease-in infinite alternate;
+}
+.softskills-container .cut-text-container .cut-text {
+  margin: 0;
+}
+.softskills-container .cut-text-container span {
+  color: #f9f9f9;
+  mix-blend-mode: lighten;
+  background-color: #1fa78f;
+}
+.softskills-container .colored-text {
+  color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.softskills-container .colored-text.second {
+  top: 50%;
+}
+
+@keyframes moveCutClip {
+  0%,
+  25% {
+    clip-path: polygon(0 0, 95% 0, 100% 50%, 5% 50%);
+  }
+  75%,
+  100% {
+    clip-path: polygon(0 50%, 95% 50%, 100% 100%, 5% 100%);
+  }
+}
+
 .accueil-container a {
   display: flex;
   align-items: center;
@@ -98,7 +163,13 @@
   transition: box-shadow 0.3s;
 }
 
-/*@media (max-width: 1024px) {
-    .home-container {
-    }
-  }*/
+@media (max-width: 1024px) {
+  .accueil-container {
+    left: 75px;
+    width: 45%;
+  }
+
+  #photoprofil {
+    height: 50%;
+  }
+}
