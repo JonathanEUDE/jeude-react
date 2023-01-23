@@ -5,13 +5,13 @@ function Home() {
     <div className="notfound-container">
       <div className="notfound-informations">
         <img
-          src="/assets/images/Logo_Jonathan_EUDE_Consulting.png"
+          src="assets/images/Logo_Jonathan_EUDE_Consulting.png"
           alt="Logo Jonathan EUDE Consulting"
         />
         <div>
           <span>404</span>
           <img
-            src="/assets/images/Jonathan_EUDE_Photo_Profil.png"
+            src="assets/images/Jonathan_EUDE_Photo_Profil.png"
             alt="Jonathan EUDE, Consultant / Chef de Projet / Développeur Freelance"
           />
         </div>

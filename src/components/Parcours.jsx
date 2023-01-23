@@ -206,7 +206,7 @@ function Parcours() {
           <div className="step-info-left">
             <div className="step-info-left-top">
               <img
-                src="assets/images/parcours/bolloré_energy.png"
+                src="assets/images/parcours/bollore_energy.png"
                 alt="Logo Bolloré Énergy"
                 className="step-logo"
               />
@@ -373,7 +373,7 @@ function Parcours() {
           <div className="step step-3" id="step-3">
             <a href="#bollore" onClick={handleClick}>
               <img
-                src="assets/images/parcours/bolloré_energy.png"
+                src="assets/images/parcours/bollore_energy.png"
                 alt="Logo Bolloré Énergy"
               />
             </a>
@@ -408,7 +408,7 @@ function Parcours() {
               id="cv"
             />
           </a>
-          <span class="tooltiptext">Télécharger CV</span>
+          <span className="tooltiptext">Télécharger CV</span>
         </div>
       </div>
     </section>
