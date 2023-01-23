@@ -9,7 +9,6 @@ function NavBar() {
 
   const scrollToAnchor = (anchorName) => {
     const anchorElement = document.getElementById(anchorName);
-    console.log('Scroll to ' + anchorElement.id);
     if (anchorElement) {
       anchorElement.scrollIntoView({ behavior: 'smooth' });
     }
@@ -22,7 +21,6 @@ function NavBar() {
   };
 
   const handleScroll = () => {
-    //console.log(window.screen.height, window.innerHeight);
     const scrollY = window.scrollY;
     const header = document.querySelector('header');
     if (scrollY > 50) {

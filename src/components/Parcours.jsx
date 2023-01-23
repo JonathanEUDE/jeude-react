@@ -7,7 +7,6 @@ function Parcours() {
 
   const scrollToStep = (stepName) => {
     const stepElement = document.getElementById(stepName);
-    console.log('Scroll to ' + stepElement.id);
     if (stepElement) {
       stepElement.scrollIntoView({
         behavior: 'smooth',
@@ -17,42 +16,35 @@ function Parcours() {
   };
 
   React.useEffect(() => {
-    console.log('useEffect !!!');
     let parcours = document.querySelector('#parcours');
     Array.from(parcours.querySelectorAll('.step')).forEach(
       (stepEl, stepIdx) => {
         if (stepIdx <= currentStep) {
-          //console.log('add active step ' + (stepIdx + 1));
           parcours
             .querySelector('.step-' + (stepIdx + 1))
             .classList.add('active');
         } else {
-          //console.log('remove active step ' + (stepIdx + 1));
           parcours
             .querySelector('.step-' + (stepIdx + 1))
             .classList.remove('active');
         }
         for (let i = 0; i <= 100; i = i + 10) {
           if (stepIdx === currentStep && avancement >= i) {
-            //console.log('add progress ' + i + ' step ' + (stepIdx + 1));
             parcours
               .querySelector('.step-' + (stepIdx + 1))
               .classList.add('progress-' + i);
           }
           if (stepIdx === currentStep && avancement < i) {
-            //console.log('remove progress ' + i + ' step ' + (stepIdx + 1));
             parcours
               .querySelector('.step-' + (stepIdx + 1))
               .classList.remove('progress-' + i);
           }
           if (stepIdx < currentStep) {
-            //console.log('add progress ' + i + ' step ' + (stepIdx + 1));
             parcours
               .querySelector('.step-' + (stepIdx + 1))
               .classList.add('progress-' + i);
           }
           if (stepIdx > currentStep) {
-            //console.log('remove progress ' + i + ' step ' + (stepIdx + 1));
             parcours
               .querySelector('.step-' + (stepIdx + 1))
               .classList.remove('progress-' + i);
@@ -89,7 +81,6 @@ function Parcours() {
           if (idx !== currentStep) setCurrentStep(idx);
           let avc = Math.floor((10 * (scrollY - topStep)) / heightStep) * 10;
           if (avc !== avancement) setAvancement(avc);
-          //console.log(idx, currentStep, avancement);
         } else {
           el.classList.remove('active');
         }
