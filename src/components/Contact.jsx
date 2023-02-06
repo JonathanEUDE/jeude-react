@@ -22,14 +22,14 @@ function Contact() {
     event.preventDefault();
     console.log(formData);
 
-    await fetch('http://localhost:3333/message', {
+    await fetch('https://jeude.fr/api/message', {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
       credentials: 'same-origin', // include, *same-origin, omit
       headers: {
         'Content-Type': 'application/json',
-        Origin: 'http://localhost:3333',
+        Origin: 'https://jeude.fr/',
         //'Content-Type': 'application/x-www-form-urlencoded',
       },
       //redirect: 'follow', // manual, *follow, error
