@@ -25,3 +25,20 @@
   color: #1fa78f;
   transition: color 0.5s;
 }
+
+@media (max-width: 768px) {
+  .socialnetworkbar-container {
+    flex-direction: row;
+
+    width: 200px;
+    height: 40px;
+
+    position: fixed;
+    top: unset;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(249, 249, 249, 0.7);
+    -webkit-backface-visibility: hidden;
+  }
+}

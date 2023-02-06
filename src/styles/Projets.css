@@ -138,7 +138,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  width: 90%;
+  width: 95%;
   height: 30%;
   background-color: white;
   padding: 5px;
@@ -202,5 +202,47 @@
   .projet-container:hover ~ .img-container {
     filter: initial;
     border-radius: 30vw;
+  }
+}
+
+@media (max-width: 768px) {
+  #projets {
+    padding: 100px 10px 70px 10px;
+    position: static;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .projet-container {
+    width: 50vw;
+    height: 50vw;
+  }
+
+  .projet-container span {
+    width: 10vw;
+    font-size: min(1.3vw, 14px);
+  }
+
+  .projet-infos {
+    width: 95vw;
+    height: 95vw;
+    margin-bottom: 50px;
+  }
+  .projet-preview {
+    width: 70vw;
+  }
+
+  .projet-container img {
+    max-height: 12vh;
+    max-width: 30vw;
+  }
+  .projet-logos {
+    width: 90vw;
+  }
+
+  .projet-container span {
+    width: 25vw;
+    font-size: 14px;
   }
 }

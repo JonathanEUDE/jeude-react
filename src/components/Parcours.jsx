@@ -72,7 +72,7 @@ function Parcours() {
         el,
         idx
       ) {
-        let topStep = topParcours + el.offsetTop - window.innerHeight / 3;
+        let topStep = topParcours + el.offsetTop - window.innerHeight / 1.5;
         let heightStep = el.offsetHeight;
         let bottomStep = topStep + heightStep;
 
@@ -202,9 +202,8 @@ function Parcours() {
                 className="step-logo"
               />
               <h4 className="green-title">Responsable d'application</h4>
-              <span>3 ans et 9 mois - Juillet 2022 - Décembre 2022</span>
-              <br />
-              <span>Puteaux (92) / Lucé (28)</span>
+              <p>3 ans et 9 mois - Juillet 2022 - Décembre 2022</p>
+              <p>Puteaux (92) / Lucé (28)</p>
             </div>
             <div className="step-info-left-bottom">
               <p>

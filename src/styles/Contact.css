@@ -16,7 +16,7 @@ form {
   align-items: center;
 }
 .form-container p {
-  font-size: 16px;
+  font-size: min(3vw, 16px);
   margin-bottom: 30px;
 }
 
@@ -69,4 +69,20 @@ form {
 
 #social-links a span {
   width: 80%;
+  display: grid;
+  place-items: center;
+}
+
+@media (max-width: 768px) {
+  #contact {
+    flex-direction: column-reverse;
+  }
+
+  form {
+    width: 90%;
+  }
+
+  #social-links {
+    width: 90%;
+  }
 }

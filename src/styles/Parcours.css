@@ -9,10 +9,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
   position: absolute;
   top: 100px;
   left: 0;
+  width: 100%;
 
   padding: 10px;
   border-radius: 0 0 5px 5px;
@@ -166,7 +166,7 @@
   justify-content: space-around;
 }
 .step-info-left-top {
-  height: 45%;
+  margin-bottom: 10px;
 }
 
 .step-info-left-top span {
@@ -189,7 +189,7 @@
 .step-info-right {
   width: 45%;
 
-  padding: 20px 50px;
+  padding: 20px 30px;
   background-color: #f9f9f9;
   opacity: 80%;
   display: flex;
@@ -245,7 +245,7 @@
   }
 
   .step-info-left-top {
-    width: 80%;
+    width: 90%;
   }
 
   .step-info-left-bottom {
@@ -253,7 +253,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 80%;
+    width: 90%;
     height: auto;
   }
 
@@ -269,5 +269,29 @@
 
   .step:not(:last-child):after {
     width: 7%;
+  }
+}
+
+@media (max-width: 768px) {
+  .fil-ariane {
+    top: 70px;
+    padding: 0;
+  }
+  .steps {
+    width: 100vw;
+  }
+
+  .step {
+    width: 50px;
+    aspect-ratio: 1;
+  }
+
+  .step img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .steps-informations {
+    padding: 0;
   }
 }
