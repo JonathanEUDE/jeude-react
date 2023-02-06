@@ -5,6 +5,8 @@ import Projets from '../components/Projets';
 import Parcours from '../components/Parcours';
 import Tarifs from '../components/Tarifs';
 import Contact from '../components/Contact';
+import NewsletterModal from '../components/NewsletterModal';
+import CookieConsent from 'react-cookie-consent';
 
 function Home() {
   return (
@@ -15,6 +17,21 @@ function Home() {
       <Parcours />
       <Tarifs />
       <Contact />
+      <NewsletterModal />
+
+      <CookieConsent
+        debug
+        enableDeclineButton
+        flipButtons
+        buttonText="J'accepte"
+        declineButtonText="Je refuse"
+        onDecline={() => {
+          const modalElement = document.getElementById('modal');
+          if (modalElement) modalElement.remove();
+        }}
+      >
+        Ce site utilise des cookies pour améliorer l'expérience utilisateur.
+      </CookieConsent>
     </main>
   );
 }

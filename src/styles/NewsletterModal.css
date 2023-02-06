@@ -1,0 +1,115 @@
+.modal-wrapper {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 900;
+
+  background-color: rgba(20, 20, 20, 80%);
+  backdrop-filter: blur(10px);
+}
+
+.modal {
+  width: 60vw;
+  height: 70vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: rgba(240, 240, 240, 95%);
+  border-radius: 20px;
+  position: relative;
+
+  padding: 50px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.modal .green-title {
+  font-size: min(5vw, 26px);
+}
+
+.modal p {
+  font-size: min(4vw, 22px);
+}
+
+.modal p a {
+  font-weight: bold;
+  color: #1fa78f;
+}
+
+.modal p a:hover {
+  filter: drop-shadow(0 0 10px #1fa78f);
+}
+
+.beta {
+  font-family: 'Roboto Bold', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+  box-shadow: 0, 0, 10px, black;
+}
+
+.modal-form {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid grey;
+  background-color: transparent;
+  width: 300px;
+}
+
+.form-button {
+  background-color: #1fa78f;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.form-button:hover {
+  box-shadow: 0 0 10px #1fa78f;
+}
+
+.close-button {
+  color: black;
+  padding: 10px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-content: center;
+  border: none;
+  font-weight: bold;
+  border: 1px solid black;
+
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .modal-wrapper {
+    width: 100vw;
+    height: 60vh;
+  }
+
+  .modal {
+    width: 100%;
+  }
+}

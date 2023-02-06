@@ -1,7 +1,11 @@
 @font-face {
   font-family: 'Roboto Regular';
-  src: local('Roboto'),
-    url('./styles/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+  src: url('./styles/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto Bold';
+  src: url('./styles/fonts/Roboto/Roboto-Bold.ttf') format('truetype');
 }
 
 * {
@@ -33,7 +37,7 @@ code {
 
 .green-title {
   color: #20a18c;
-  font-size: min(3vw, 50px);
+  font-size: min(4vw, 50px);
   font-weight: 700;
 }
 
@@ -45,14 +49,14 @@ code {
 
 h1 {
   color: black;
-  font-size: 48px;
+  font-size: min(6vw, 48px);
   font-weight: 700;
   margin: 0;
 }
 
 h2 {
   color: black;
-  font-size: 24px;
+  font-size: min(5vw, 24px);
   font-weight: 700;
   margin: 20px 0;
 }
