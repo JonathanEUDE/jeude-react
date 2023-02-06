@@ -18,6 +18,10 @@ function NavBar() {
     event.preventDefault();
     const anchorName = event.currentTarget.getAttribute('href').substring(1);
     scrollToAnchor(anchorName);
+    const timer = setTimeout(() => {
+      const btnMenu = document.getElementById('menu__toggle');
+      btnMenu.checked = false;
+    }, 500);
   };
 
   const handleScroll = () => {
