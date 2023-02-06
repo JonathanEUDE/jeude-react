@@ -34,7 +34,7 @@ function Tarifs() {
       </div>
       <div className="pack" id="pack-confort">
         <h5 className="white-title">
-          Pack Confort <small>Expertise & Qualité en un pack !</small>
+          Pack Confort <small>Le luxe de la simplicité !</small>
         </h5>
         <ul>
           <li>Analyse des besoins</li>
@@ -67,7 +67,11 @@ function Tarifs() {
       </div>
       <div className="pack" id="pack-serenite">
         <h5 className="white-title">
-          Pack Sérénité <small>Tout inclus avec Sérénité !</small>
+          Pack Sérénité{' '}
+          <small>
+            <p>Laissez-vous guider,</p>
+            <p>restez serein !</p>
+          </small>
         </h5>
         <ul>
           <li>Analyse des besoins</li>
